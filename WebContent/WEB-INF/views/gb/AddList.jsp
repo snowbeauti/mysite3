@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 
 
 <%@ page import="java.util.List"%>
@@ -10,6 +10,7 @@ request.setCharacterEncoding("UTF-8");
 List<GuestVo> gList = (List<GuestVo>)request.getAttribute("guestList");
 %>
 
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
