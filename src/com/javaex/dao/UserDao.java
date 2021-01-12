@@ -97,4 +97,51 @@ public int insert(UserVo userVo) {
 	
 }
 
+public UserVo getUser(String id, String password) {
+	
+	UserVo uservo = null;
+	gcn();
+	
+	try {
+		/*SELECT no,
+       id,
+       password,
+       name,
+       gender
+       FROM users
+       where id = 'aaa'
+       and password = '1234';*/
+		// 3. SQL문 준비 / 바인딩 / 실행
+		
+		String query = "";
+		query += " SELECT no, ";
+		query += "        name ";
+		query += "        FROM users ";
+		query += " where id = ? ";
+		query += " and password = ? ";
+		
+		
+		pstmt = conn.prepareStatement(query);
+		pstmt.setString(1, id);
+		pstmt.setString(2, password);
+
+		rs = pstmt.executeQuery();
+
+		// 4.결과처리
+		while(rs.next()) {
+			int no = rs.getInt("no");
+			String name = rs.getString("name");
+			
+			uservo = new UserVo(no, name);
+		}
+	} catch (SQLException e) {
+		System.out.println("error:" + e);
+	}
+	
+	close();
+	
+	return uservo;
+	
+}
+
 }

@@ -9,7 +9,11 @@
 request.setCharacterEncoding("UTF-8");
 List<GuestVo> gList = (List<GuestVo>)request.getAttribute("guestList");
 %>
+<%@ page import="com.javaex.vo.UserVo"%>
 
+<%
+	UserVo authuser = (UserVo) session.getAttribute("authUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +32,23 @@ List<GuestVo> gList = (List<GuestVo>)request.getAttribute("guestList");
 				<a href="/mysite2/main">MySite</a>
 			</h1>
 
+		<%
+				if (authuser == null) {
+			%>
 			<ul>
 				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
 				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
 			</ul>
+			<%
+				} else {
+			%>
+			<ul>
+				<li><%=authuser.getName() %>님 안녕하세요^^</li>
+				<li><a href="">로그아웃</a></li>
+				<li><a href="">회원정보수정</a></li>
+			</ul>
+			<%
+				}%>
 		</div>
 		<!-- //header -->
 
@@ -123,7 +140,7 @@ List<GuestVo> gList = (List<GuestVo>)request.getAttribute("guestList");
 					<%
 		}
 	%>
-
+</table>
 				
 			</div>
 			<!-- //guestbook -->

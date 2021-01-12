@@ -1,8 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.javaex.vo.UserVo"%>
 
 <%
-int no = Integer.parseInt(request.getParameter("no"));
+	UserVo authuser = (UserVo) session.getAttribute("authUser");
 
+int no = Integer.parseInt(request.getParameter("no"));
 %>
 
 
@@ -11,8 +14,10 @@ int no = Integer.parseInt(request.getParameter("no"));
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite2/assets/css/guestbook.css" rel="stylesheet" type="text/css">
+<link href="/mysite2/assets/css/mysite.css" rel="stylesheet"
+	type="text/css">
+<link href="/mysite2/assets/css/guestbook.css" rel="stylesheet"
+	type="text/css">
 
 </head>
 
@@ -24,10 +29,23 @@ int no = Integer.parseInt(request.getParameter("no"));
 				<a href="/mysite2/main">MySite</a>
 			</h1>
 
+		<%
+				if (authuser == null) {
+			%>
 			<ul>
 				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
 				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
 			</ul>
+			<%
+				} else {
+			%>
+			<ul>
+				<li><%=authuser.getName() %>님 안녕하세요^^</li>
+				<li><a href="">로그아웃</a></li>
+				<li><a href="">회원정보수정</a></li>
+			</ul>
+			<%
+				} %>
 		</div>
 		<!-- //header -->
 
@@ -52,19 +70,19 @@ int no = Integer.parseInt(request.getParameter("no"));
 		<!-- //aside -->
 
 		<div id="content">
-			
+
 			<div id="content-head">
-            	<h3>일반방명록</h3>
-            	<div id="location">
-            		<ul>
-            			<li>홈</li>
-            			<li>방명록</li>
-            			<li class="last">일반방명록</li>
-            		</ul>
-            	</div>
-                <div class="clear"></div>
-            </div>
-            <!-- //content-head -->
+				<h3>일반방명록</h3>
+				<div id="location">
+					<ul>
+						<li>홈</li>
+						<li>방명록</li>
+						<li class="last">일반방명록</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!-- //content-head -->
 
 			<div id="guestbook">
 				<form action="/mysite2/gb" method="get">
@@ -82,19 +100,17 @@ int no = Integer.parseInt(request.getParameter("no"));
 							<td><a href="/mysite2/gc">[메인으로 돌아가기]</a></td>
 						</tr>
 					</table>
-					<input type='hidden' name="no" value="<%=no%>">
-					<input type='hidden' name="action" value="delete">
+					<input type='hidden' name="no" value="<%=no%>"> <input
+						type='hidden' name="action" value="delete">
 				</form>
-				
+
 			</div>
 			<!-- //guestbook -->
 		</div>
 		<!-- //content  -->
 		<div class="clear"></div>
-		
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
-		</div>
+
+		<div id="footer">Copyright ⓒ 2020 황일영. All right reserved</div>
 		<!-- //footer -->
 
 	</div>

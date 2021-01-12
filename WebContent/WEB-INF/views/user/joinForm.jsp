@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+
+<%@ page import="com.javaex.vo.UserVo"%>
+
+<%
+	UserVo authuser = (UserVo) session.getAttribute("authUser");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
+<link href="/mysite2/assets/css/mysite.css" rel="stylesheet"
+	type="text/css">
+<link href="/mysite2/assets/css/user.css" rel="stylesheet"
+	type="text/css">
 
 </head>
 
@@ -18,10 +27,23 @@
 				<a href="/mysite2/main">MySite</a>
 			</h1>
 
+		<%
+				if (authuser == null) {
+			%>
 			<ul>
 				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
 				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
 			</ul>
+			<%
+				} else {
+			%>
+			<ul>
+				<li><%=authuser.getName() %>님 안녕하세요^^</li>
+				<li><a href="">로그아웃</a></li>
+				<li><a href="">회원정보수정</a></li>
+			</ul>
+			<%
+				} %>
 		</div>
 		<!-- //header -->
 
@@ -47,19 +69,19 @@
 		<!-- //aside -->
 
 		<div id="content">
-			
+
 			<div id="content-head">
-            	<h3>회원가입</h3>
-            	<div id="location">
-            		<ul>
-            			<li>홈</li>
-            			<li>회원</li>
-            			<li class="last">회원가입</li>
-            		</ul>
-            	</div>
-                <div class="clear"></div>
-            </div>
-            <!-- //content-head -->
+				<h3>회원가입</h3>
+				<div id="location">
+					<ul>
+						<li>홈</li>
+						<li>회원</li>
+						<li class="last">회원가입</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!-- //content-head -->
 
 			<div id="user">
 				<div id="joinForm">
@@ -67,49 +89,49 @@
 
 						<!-- 아이디 -->
 						<div class="form-group">
-							<label class="form-text" for="input-uid">아이디</label> 
-							<input type="text" id="input-uid" name="uid" value="" placeholder="아이디를 입력하세요">
+							<label class="form-text" for="input-uid">아이디</label> <input
+								type="text" id="input-uid" name="uid" value=""
+								placeholder="아이디를 입력하세요">
 							<button type="button" id="">중복체크</button>
 						</div>
 
 						<!-- 비밀번호 -->
 						<div class="form-group">
-							<label class="form-text" for="input-pass">패스워드</label> 
-							<input type="text" id="input-pass" name="pw" value="" placeholder="비밀번호를 입력하세요"	>
+							<label class="form-text" for="input-pass">패스워드</label> <input
+								type="text" id="input-pass" name="pw" value=""
+								placeholder="비밀번호를 입력하세요">
 						</div>
 
 						<!-- 이름 -->
 						<div class="form-group">
-							<label class="form-text" for="input-name">이름</label> 
-							<input type="text" id="input-name" name="uname" value="" placeholder="이름을 입력하세요">
+							<label class="form-text" for="input-name">이름</label> <input
+								type="text" id="input-name" name="uname" value=""
+								placeholder="이름을 입력하세요">
 						</div>
 
 						<!-- //성별 -->
 						<div class="form-group">
-							<span class="form-text">성별</span> 
-							
-							<label for="rdo-male">남</label> 
-							<input type="radio" id="rdo-male" name="gender" value="male" > 
-							
-							<label for="rdo-female">여</label> 
-							<input type="radio" id="rdo-female" name="gender" value="female" > 
+							<span class="form-text">성별</span> <label for="rdo-male">남</label>
+							<input type="radio" id="rdo-male" name="gender" value="male">
+
+							<label for="rdo-female">여</label> <input type="radio"
+								id="rdo-female" name="gender" value="female">
 
 						</div>
 
 						<!-- 약관동의 -->
 						<div class="form-group">
-							<span class="form-text">약관동의</span> 
-							
-							<input type="checkbox" id="chk-agree" value="" name="">
-							<label for="chk-agree">서비스 약관에 동의합니다.</label> 
+							<span class="form-text">약관동의</span> <input type="checkbox"
+								id="chk-agree" value="" name=""> <label for="chk-agree">서비스
+								약관에 동의합니다.</label>
 						</div>
-						
+
 						<!-- 버튼영역 -->
-		                <div class="button-area">
-		                    <button type="submit" id="btn-submit">회원가입</button>
-		                </div>
+						<div class="button-area">
+							<button type="submit" id="btn-submit">회원가입</button>
+						</div>
 						<input type="text" name="action" value="join">
-						
+
 					</form>
 				</div>
 				<!-- //joinForm -->
@@ -118,10 +140,8 @@
 		</div>
 		<!-- //content  -->
 		<div class="clear"></div>
-		
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
-		</div>
+
+		<div id="footer">Copyright ⓒ 2020 황일영. All right reserved</div>
 		<!-- //footer -->
 
 	</div>

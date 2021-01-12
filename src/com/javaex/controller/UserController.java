@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.javaex.dao.UserDao;
 import com.javaex.util.WebUtil;
@@ -59,7 +60,47 @@ public class UserController extends HttpServlet {
 			
 			//포워드 --> loginForm.jsp
 			WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");	
+		} else if("login".equals(action)) {
+			System.out.println("로그인");
+			//파라미터 id pw
+			String id = request.getParameter("id");
+			String password = request.getParameter("password");
+			
+			
+			//dao--> getUser();
+			UserDao userDao = new UserDao();
+			UserVo authVo = userDao.getUser(id, password);
+			System.out.println(authVo);
+			
+			
+			
+			if(authVo==null) {//로그인실패
+				System.out.println("로그인 실패");
+				//리다이렉트 로그인폼
+				WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");
+				
+			}else {//성공일때
+				System.out.println("로그인 성공");
+				
+				//세션영역에 필요한 (vo)값을 넣어준다.
+				HttpSession session = request.getSession();
+				session.setAttribute("authUser", authVo);
+				
+				WebUtil.forward(request, response, "/main");
+				
+			
+			}
+		} else if("logout".equals(action)) {
+			System.out.println("로그아웃");
+			
+			//세션영역에 있는 vo를 삭제해야함
+			HttpSession session = request.getSession();
+			session.removeAttribute("authUser");
+			session.invalidate();
+			
+			WebUtil.forward(request, response, "/main");
 		}
+		
 		
 
 		
