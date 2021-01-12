@@ -18,8 +18,8 @@
 			</h1>
 
 			<ul>
-				<li><a href="/mysite2/user?action=loginForm">로그인</a></li>
-				<li><a href="/mysite2/user?action=joinForm">회원가입</a></li>
+				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
 			</ul>
 			
 		</div>
@@ -40,8 +40,8 @@
 			<h2>회원</h2>
 			<ul>
 				<li>회원정보</li>
-				<li><a href="/mysite2/user?action=loginForm">로그인</a></li>
-				<li><a href="/mysite2/user?action=joinForm">회원가입</a></li>
+				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
 			</ul>
 		</div>
 		<!-- //aside -->

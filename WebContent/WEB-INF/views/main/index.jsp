@@ -17,8 +17,8 @@
 			
 			<!-- 
 			<ul>
-				<li><a href="/mysite2/user?action=loginForm">로그인</a></li>
-				<li><a href="/mysite2/user?action=joinForm">회원가입</a></li>
+				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
 			</ul>
 			-->
 			<ul>
@@ -32,7 +32,7 @@
 
 		<div id="nav">
 			<ul>
-				<li><a href="">방명록</a></li>
+				<li><a href="/mysite2/gb?action=addlist">방명록</a></li>
 				<li><a href="">갤러리</a></li>
 				<li><a href="">게시판</a></li>
 				<li><a href="">입사지원서</a></li>

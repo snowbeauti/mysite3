@@ -41,7 +41,7 @@ public class GuestController extends HttpServlet {
 			guestDao.insert(new GuestVo(name, password, content));
 
 			// 리스트로 돌아오기
-			WebUtil.forward(request, response, "./gb?action=addlist");
+			response.sendRedirect("/mysite2/gb?action=addList");
 
 		} else if ("dform".equals(action)) {
 			System.out.println("삭제폼");

@@ -19,8 +19,8 @@
 			</h1>
 
 			<ul>
-				<li><a href="/mysite2/user?action=loginForm">로그인</a></li>
-				<li><a href="/mysite2/user?action=joinForm">회원가입</a></li>
+				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
 			</ul>
 		</div>
 		<!-- //header -->
@@ -40,8 +40,8 @@
 			<h2>회원</h2>
 			<ul>
 				<li>회원정보</li>
-				<li><a href="/mysite2/user?action=loginForm">로그인</a></li>
-				<li><a href="/mysite2/user?action=joinForm">회원가입</a></li>
+				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
 			</ul>
 		</div>
 		<!-- //aside -->
@@ -67,7 +67,7 @@
 					<p class="text-large bold">
 						회원가입을 축하합니다.<br>
 						<br>
-						<a href="/mysite2/user?action=loginForm" >[로그인하기]</a>
+						<a href="/mysite2/user?action=loginform" >[로그인하기]</a>
 					</p>
 						
 				</div>
