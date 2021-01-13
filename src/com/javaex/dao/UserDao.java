@@ -142,6 +142,96 @@ public UserVo getUser(String id, String password) {
 	
 	return uservo;
 	
+} public int update(UserVo uvo) {
+	gcn();
+	int count = 0;
+	
+	try {/*
+		UPDATE users
+		SET id = 'aaa', 
+		password = '1234',
+		name = '감귤',
+		gender = 'male'
+		WHERE no = 1 ;
+		*/
+		
+		// 3. SQL문 준비 / 바인딩 / 실행
+		String query = "";
+		query += " UPDATE users ";
+		query += " SET password = ?, ";
+		query += "     name = ?, ";
+		query += "     gender = ? ";
+		query += " WHERE no = ? ";
+		
+		pstmt = conn.prepareStatement(query);
+		pstmt.setString(1, uvo.getPassword());
+		pstmt.setString(2, uvo.getName());
+		pstmt.setString(3, uvo.getGender());
+		pstmt.setInt(4, uvo.getNo());
+		
+		count = pstmt.executeUpdate();
+
+		// 4.결과처리
+		System.out.println(count + "건 수정되었습니다.");
+
+	} catch (SQLException e) {
+		System.out.println("error:" + e);
+	}
+	// 자원정리
+	close();
+
+	return count;
+}
+		
+//사람 1명 가져오기
+
+public UserVo getUser(int no) {
+	UserVo uvo = null;
+	gcn();
+	
+	try {
+		/*
+		SELECT id,
+	           password,
+	           name,
+	           gender
+	    FROM users
+	    where no = 1;
+	    */
+
+		// 3. SQL문 준비 / 바인딩 / 실행
+		String query = "";
+		query += " SELECT no, ";
+		query += "        id, ";
+		query += "        password, ";
+		query += "        name, ";
+		query += "        gender ";
+		query += " FROM users ";
+		query += " where no = ? ";
+		
+		pstmt = conn.prepareStatement(query);
+		pstmt.setInt(1, no);
+		
+		rs=pstmt.executeQuery();
+		
+		// 4.결과처리
+		
+		while(rs.next()) {
+			int NO = rs.getInt("no");
+			String id = rs.getString("id");
+			String password = rs.getString("password");
+			String name = rs.getString("name");
+			String gender = rs.getString("gender");
+			
+			uvo = new UserVo(NO, id, password, name, gender);
+			
+		}
+	} catch (SQLException e) {
+		System.out.println("error:" + e);
+	}
+	// 자원정리
+	close();
+	return uvo;
 }
 
 }
