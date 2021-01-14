@@ -1,18 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import = "com.javaex.vo.UserVo" %>
-  
-<%
-	String result = request.getParameter("result");
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet"
+<link href="/mysite3/assets/css/mysite.css" rel="stylesheet"
 	type="text/css">
-<link href="/mysite2/assets/css/user.css" rel="stylesheet"
+<link href="/mysite3/assets/css/user.css" rel="stylesheet"
 	type="text/css">
 
 </head>
@@ -20,15 +17,15 @@
 	<div id="wrap">
 
 		<!-- header nav -->
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
 
 		<div id="aside">
 			<h2>회원</h2>
 			<ul>
 				<li>회원정보</li>
-				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
-				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
+				<li><a href="/mysite3/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite3/user?action=joinform">회원가입</a></li>
 			</ul>
 		</div>
 		<!-- //aside -->
@@ -50,7 +47,7 @@
 
 			<div id="user">
 				<div id="loginForm">
-					<form action="/mysite2/user" method="get">
+					<form action="/mysite3/user" method="get">
 
 						<!-- 아이디 -->
 						<div class="form-group">
@@ -65,11 +62,12 @@
 								type="text" id="input-pass" name="password" value=""
 								placeholder="비밀번호를 입력하세요">
 						</div>
-						<% if("fail".equals(result)){ %>
+						<c:if test="${param.result == 'fail'}">
 						<p>
 						로그인에 실패했습니다. 다시 로그인 해주세요.
 						</p>
-						<% } %>
+					
+						</c:if>
 						<!-- 버튼영역 -->
 						<div class="button-area">
 							<button type="submit" id="btn-submit">로그인</button>
@@ -85,7 +83,7 @@
 		<!-- //content  -->
 		<div class="clear"></div>
 
-		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->

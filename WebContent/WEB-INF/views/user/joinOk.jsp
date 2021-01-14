@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
+<link href="/mysite3/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="/mysite3/assets/css/user.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -14,15 +16,15 @@
 	<div id="wrap">
 
 			<!-- header nav -->
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 		
 
 		<div id="aside">
 			<h2>회원</h2>
 			<ul>
 				<li>회원정보</li>
-				<li><a href="/mysite2/user?action=loginform">로그인</a></li>
-				<li><a href="/mysite2/user?action=joinform">회원가입</a></li>
+				<li><a href="/mysite3/user?action=loginform">로그인</a></li>
+				<li><a href="/mysite3/user?action=joinform">회원가입</a></li>
 			</ul>
 		</div>
 		<!-- //aside -->
@@ -48,7 +50,7 @@
 					<p class="text-large bold">
 						회원가입을 축하합니다.<br>
 						<br>
-						<a href="/mysite2/user?action=loginform" >[로그인하기]</a>
+						<a href="/mysite3/user?action=loginform" >[로그인하기]</a>
 					</p>
 						
 				</div>
@@ -59,9 +61,7 @@
 		<!-- //content  -->
 		<div class="clear"></div>
 
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
-		</div>
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 		<!-- //footer -->
 
 	</div>

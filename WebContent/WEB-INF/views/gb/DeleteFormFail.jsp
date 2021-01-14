@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%
-int no = (int)request.getAttribute("no");
-%>   
-
-
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.javaex.vo.UserVo"%>
 
 <%
@@ -17,15 +11,15 @@ int no = (int)request.getAttribute("no");
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite2/assets/css/guestbook.css" rel="stylesheet" type="text/css">
+<link href="/mysite3/assets/css/mysite.css" rel="stylesheet" type="text/css">
+<link href="/mysite3/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
 	<div id="wrap">
 
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
 		<div id="aside">
 			<h2>방명록</h2>
@@ -60,7 +54,7 @@ int no = (int)request.getAttribute("no");
 							<col style="width: 50%;">
 						</colgroup>
 						<tr>
-							<td><a href="./gb?action=dform&no=<%=no%>">비밀번호 재시도</a></td>
+							<td><a href="./gb?action=dform&no=${requestScope.no}">비밀번호 재시도</a></td>
 							<td><a href="./gb?action=addlist">방명록으로 가기</a></td>
 						</tr>
 					</table>
@@ -72,7 +66,7 @@ int no = (int)request.getAttribute("no");
 		<!-- //content  -->
 		<div class="clear"></div>
 		
-		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->

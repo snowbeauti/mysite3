@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	
 <%@ page import="com.javaex.vo.UserVo"%>
 
 <%
 	UserVo authuser = (UserVo) session.getAttribute("authUser");
-
-int no = Integer.parseInt(request.getParameter("no"));
 %>
 
 
@@ -14,9 +13,9 @@ int no = Integer.parseInt(request.getParameter("no"));
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet"
+<link href="/mysite3/assets/css/mysite.css" rel="stylesheet"
 	type="text/css">
-<link href="/mysite2/assets/css/guestbook.css" rel="stylesheet"
+<link href="/mysite3/assets/css/guestbook.css" rel="stylesheet"
 	type="text/css">
 
 </head>
@@ -24,7 +23,7 @@ int no = Integer.parseInt(request.getParameter("no"));
 <body>
 	<div id="wrap">
 
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
 		<div id="aside">
 			<h2>방명록</h2>
@@ -51,7 +50,7 @@ int no = Integer.parseInt(request.getParameter("no"));
 			<!-- //content-head -->
 
 			<div id="guestbook">
-				<form action="/mysite2/gb" method="get">
+				<form action="/mysite3/gb" method="get">
 					<table id="guestDelete">
 						<colgroup>
 							<col style="width: 10%;">
@@ -63,10 +62,10 @@ int no = Integer.parseInt(request.getParameter("no"));
 							<td>비밀번호</td>
 							<td><input type="password" name="password"></td>
 							<td class="text-left"><button type="submit">삭제</button></td>
-							<td><a href="/mysite2/gc">[메인으로 돌아가기]</a></td>
+							<td><a href="/mysite3/gb">[메인으로 돌아가기]</a></td>
 						</tr>
 					</table>
-					<input type='hidden' name="no" value="<%=no%>"> <input
+					<input type='hidden' name="no" value="${param.no}"> <input
 						type='hidden' name="action" value="delete">
 				</form>
 
@@ -76,7 +75,7 @@ int no = Integer.parseInt(request.getParameter("no"));
 		<!-- //content  -->
 		<div class="clear"></div>
 
-		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->

@@ -1,33 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.javaex.vo.GuestVo"%>
 
 <%
-request.setCharacterEncoding("UTF-8");
-List<GuestVo> gList = (List<GuestVo>)request.getAttribute("guestList");
+	request.setCharacterEncoding("UTF-8");
+	List<GuestVo> gList = (List<GuestVo>) request.getAttribute("guestList");
 %>
-<%@ page import="com.javaex.vo.UserVo"%>
 
-<%
-	UserVo authuser = (UserVo) session.getAttribute("authUser");
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="/mysite2/assets/css/guestbook.css" rel="stylesheet" type="text/css">
+<link href="/mysite3/assets/css/mysite.css" rel="stylesheet"
+	type="text/css">
+<link href="/mysite3/assets/css/guestbook.css" rel="stylesheet"
+	type="text/css">
 
 </head>
 
 <body>
 	<div id="wrap">
 
-		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
 		<div id="aside">
 			<h2>방명록</h2>
@@ -39,22 +37,22 @@ List<GuestVo> gList = (List<GuestVo>)request.getAttribute("guestList");
 		<!-- //aside -->
 
 		<div id="content">
-			
+
 			<div id="content-head">
-            	<h3>일반방명록</h3>
-            	<div id="location">
-            		<ul>
-            			<li>홈</li>
-            			<li>방명록</li>
-            			<li class="last">일반방명록</li>
-            		</ul>
-            	</div>
-                <div class="clear"></div>
-            </div>
-            <!-- //content-head -->
+				<h3>일반방명록</h3>
+				<div id="location">
+					<ul>
+						<li>홈</li>
+						<li>방명록</li>
+						<li class="last">일반방명록</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!-- //content-head -->
 
 			<div id="guestbook">
-				<form action="/mysite2/gb" method="get">
+				<form action="/mysite3/gb" method="get">
 					<table id="guestAdd">
 						<colgroup>
 							<col style="width: 70px;">
@@ -64,10 +62,12 @@ List<GuestVo> gList = (List<GuestVo>)request.getAttribute("guestList");
 						</colgroup>
 						<tbody>
 							<tr>
-								<th><label class="form-text" for="input-uname">이름</label></td>
+								<th><label class="form-text" for="input-uname">이름</label>
+								</td>
 								<td><input id="input-uname" type="text" name="name"></td>
-								<th><label class="form-text" for="input-pass">패스워드</label></td>
-								<td><input id="input-pass"type="password" name="password"></td>
+								<th><label class="form-text" for="input-pass">패스워드</label>
+								</td>
+								<td><input id="input-pass" type="password" name="password"></td>
 							</tr>
 							<tr>
 								<td colspan="4"><textarea name="content" cols="72" rows="5"></textarea></td>
@@ -76,45 +76,42 @@ List<GuestVo> gList = (List<GuestVo>)request.getAttribute("guestList");
 								<td colspan="4"><button type="submit">등록</button></td>
 							</tr>
 						</tbody>
-						
+
 					</table>
 					<!-- //guestWrite -->
 					<input type="hidden" name="action" value="insert">
-					
-				</form>	
-				
-					<%
-		for (int i = 0; i < gList.size(); i++) {
-	%>
-				<table class="guestRead">
-					<colgroup>
-						<col style="width: 10%;">
-						<col style="width: 40%;">
-						<col style="width: 40%;">
-						<col style="width: 10%;">
-					</colgroup>
-					<tr>
-						<td><%=gList.get(i).getNo()%><input type="hidden"
-				name="no" value="<%=gList.get(i).getNo()%>"></td>
-						<td><%=gList.get(i).getName()%></td>
-						<td><%=gList.get(i).getRegDate()%></td>
-						<td><a href="./gb?action=dform&no=<%=gList.get(i).getNo()%>">삭제</a></td>
-					</tr>
-					<tr>
-						<td colspan=4 class="text-left"><%=gList.get(i).getContent()%></td>
-					</tr>
-					<%
-		}
-	%>
-</table>
-				
+
+				</form>
+
+				<c:forEach items="${guestList}" var="GList">
+
+					<table class="guestRead">
+						<colgroup>
+							<col style="width: 10%;">
+							<col style="width: 40%;">
+							<col style="width: 40%;">
+							<col style="width: 10%;">
+						</colgroup>
+						<tr>
+							<td>${GList.no}><input type="hidden" name="no"
+								value="${GList.no}"></td>
+							<td>${GList.name}</td>
+							<td>${GList.regDate}</td>
+							<td><a href="./gb?action=dform&no=${GList.no}">삭제</a></td>
+						</tr>
+						<tr>
+							<td colspan=4 class="text-left">${GList.content}</td>
+						</tr>
+
+					</table>
+				</c:forEach>
 			</div>
 			<!-- //guestbook -->
 		</div>
 		<!-- //content  -->
 		<div class="clear"></div>
-		
-		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
+
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 
 	</div>
 	<!-- //wrap -->

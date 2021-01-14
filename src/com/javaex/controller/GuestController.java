@@ -41,7 +41,7 @@ public class GuestController extends HttpServlet {
 			guestDao.insert(new GuestVo(name, password, content));
 
 			// 리스트로 돌아오기
-			response.sendRedirect("/mysite2/gb?action=addList");
+			response.sendRedirect("/mysite3/gb?action=addist");
 
 		} else if ("dform".equals(action)) {
 			System.out.println("삭제폼");
@@ -57,12 +57,15 @@ public class GuestController extends HttpServlet {
 
 			GuestVo guestVo = new GuestVo(no, password);
 
+			
+			
 			GuestDao guestDao = new GuestDao();
 			GuestVo pw = guestDao.getGuest(no);
+			System.out.println(pw);
 
 			if (password.equals(pw.getPassword())) {
 				guestDao.delete(guestVo);
-				response.sendRedirect("/mysite2/gb?action=addList");
+				response.sendRedirect("/mysite3/gb?action=addlist");
 			} else {
 				System.out.println("삭제실패폼");
 				request.setAttribute("no", no);

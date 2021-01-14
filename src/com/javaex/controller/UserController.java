@@ -79,7 +79,7 @@ public class UserController extends HttpServlet {
 				if(authVo==null) {//로그인실패
 					System.out.println("로그인 실패");
 					//리다이렉트 로그인폼
-					WebUtil.redirect(request, response, "/mysite2/user?action=loginform&result=fail");
+					WebUtil.redirect(request, response, "/mysite3/user?action=loginform&result=fail");
 					
 				}else {//성공일때
 					System.out.println("로그인 성공");
@@ -150,7 +150,7 @@ public class UserController extends HttpServlet {
 			
 			
 			// 메인페이지로 돌아오기
-			response.sendRedirect("/mysite2/main");
+			response.sendRedirect("/mysite3/main");
 			
 			
 			
