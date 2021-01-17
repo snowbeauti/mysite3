@@ -59,7 +59,7 @@
 						<!-- 비밀번호 -->
 						<div class="form-group">
 							<label class="form-text" for="input-pass">비밀번호</label> <input
-								type="text" id="input-pass" name="password" value=""
+								type="password" id="input-pass" name="password" value=""
 								placeholder="비밀번호를 입력하세요">
 						</div>
 						<c:if test="${param.result == 'fail'}">
