@@ -172,7 +172,7 @@ public class GuestDao {
 		try {
 			// 3. SQL문 준비 / 바인딩 / 실행
 			String query = "";
-			query = " delete FROM guestbook ";
+			query += " delete FROM guestbook ";
 			query += " where no = ? ";
 			query += " and password = ? ";
 

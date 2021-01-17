@@ -25,7 +25,7 @@
 			<ul>
 				<!-- 로그인 후 -->
 				<li>${authUser.name}님 안녕하세요^^</li>
-				<li><a href="">로그아웃</a></li>
+				<li><a href="/mysite3/user?action=logout">로그아웃</a></li>
 				<li><a href="/mysite3/user?action=modifyform">회원정보수정</a></li>
 			</ul>
 		</c:otherwise>
@@ -37,7 +37,7 @@
 	<ul>
 		<li><a href="/mysite3/gb?action=addlist">방명록</a></li>
 		<li><a href="">갤러리</a></li>
-		<li><a href="">게시판</a></li>
+		<li><a href="/mysite3/board?action=list">게시판</a></li>
 		<li><a href="">입사지원서</a></li>
 	</ul>
 	<div class="clear"></div>
