@@ -198,7 +198,6 @@ public class BoardDao {
 				query += "        board.reg_date, ";
 				query += "        board.user_no, ";
 				query += "        users.id, ";
-				query += "        users.password, ";
 				query += "        users.name ";
 				query += " FROM board, users ";
 				query += " where users.no = board.user_no ";
@@ -217,10 +216,9 @@ public class BoardDao {
 					String reg_date = rs.getString("reg_date");
 					int user_no = rs.getInt("user_no");
 					String id = rs.getString("id");
-					String password = rs.getString("password");
 					String name = rs.getString("name");
 					
-					BoardVo bvo = new BoardVo(no, title, content, hit, reg_date, user_no, id, password, name);
+					BoardVo bvo = new BoardVo(no, title, content, hit, reg_date, user_no, id,  name);
 					boardList.add(bvo);
 				}
 				
@@ -250,7 +248,6 @@ public class BoardDao {
 						query += "        board.reg_date, ";
 						query += "        board.user_no, ";
 						query += "        users.id, ";
-						query += "        users.password, ";
 						query += "        users.name ";
 						query += " FROM board, users ";
 						query += " where users.no = board.user_no ";
@@ -271,10 +268,9 @@ public class BoardDao {
 							String reg_date = rs.getString("reg_date");
 							int user_no = rs.getInt("user_no");
 							String id = rs.getString("id");
-							String password = rs.getString("password");
 							String name = rs.getString("name");
 							
-							bvo = new BoardVo(No, title, content, hit, reg_date, user_no, id, password, name);
+							bvo = new BoardVo(No, title, content, hit, reg_date, user_no, id, name);
 
 						}
 						

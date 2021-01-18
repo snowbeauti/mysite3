@@ -9,7 +9,6 @@ public class BoardVo {
 	private String reg_date;
 	private int user_no;
 	private String id;
-	private String password;
 	private String name;
 	
 	
@@ -58,7 +57,7 @@ public class BoardVo {
 	
 
 	public BoardVo(int no, String title, String content, int hit, String reg_date, int user_no, String id,
-			String password, String name) {
+			String name) {
 		this.no = no;
 		this.title = title;
 		this.content = content;
@@ -66,7 +65,6 @@ public class BoardVo {
 		this.reg_date = reg_date;
 		this.user_no = user_no;
 		this.id = id;
-		this.password = password;
 		this.name = name;
 	}
 
@@ -141,16 +139,6 @@ public class BoardVo {
 	}
 
 
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
 	public String getName() {
 		return name;
 	}
@@ -164,7 +152,7 @@ public class BoardVo {
 	@Override
 	public String toString() {
 		return "BoardVo [no=" + no + ", title=" + title + ", content=" + content + ", hit=" + hit + ", reg_date="
-				+ reg_date + ", user_no=" + user_no + ", id=" + id + ", password=" + password + ", name=" + name + "]";
+				+ reg_date + ", user_no=" + user_no + ", id=" + id + ", name=" + name + "]";
 	}
 
 
