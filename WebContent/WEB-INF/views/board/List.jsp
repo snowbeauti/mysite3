@@ -69,18 +69,18 @@
 								</tr>
 							</thead>
 
-							<c:forEach items="${boardList}" var="BList" varStatus="status">
+							<c:forEach items="${boardList}" var="bvo" varStatus="status">
 								<tbody>
 									<tr>
 										<td>${status.count}<input type="hidden" name="no"
-											value="${BList.no}"></td>
+											value="${bvo.no}"></td>
 											
-										<td class="text-left"><a href="./board?action=read&no=${BList.no}">${BList.title}</a></td>
-										<td>${BList.name}</td>
-										<td>${BList.hit}</td>
-										<td>${BList.reg_date}</td>
+										<td class="text-left"><a href="./board?action=read&no=${bvo.no}">${bvo.title}</a></td>
+										<td>${bvo.name}</td>
+										<td>${bvo.hit}</td>
+										<td>${bvo.reg_date}</td>
 										
-										<td><c:if test="${authUser.no == BList.user_no}"><a href="./board?action=delete&no=${BList.no}">[삭제]</a></c:if></td>
+										<td><c:if test="${authUser.no == bvo.user_no}"><a href="./board?action=delete&no=${bvo.no}">[삭제]</a></c:if></td>
 										
 									</tr>
 								</tbody>

@@ -81,7 +81,7 @@
 
 				</form>
 
-				<c:forEach items="${guestList}" var="GList">
+				<c:forEach items="${guestList}" var="gvo">
 
 					<table class="guestRead">
 						<colgroup>
@@ -91,14 +91,14 @@
 							<col style="width: 10%;">
 						</colgroup>
 						<tr>
-							<td>${GList.no}><input type="hidden" name="no"
-								value="${GList.no}"></td>
-							<td>${GList.name}</td>
-							<td>${GList.regDate}</td>
-							<td><a href="./gb?action=dform&no=${GList.no}">삭제</a></td>
+							<td>${gvo.no}><input type="hidden" name="no"
+								value="${gvo.no}"></td>
+							<td>${gvo.name}</td>
+							<td>${gvo.regDate}</td>
+							<td><a href="./gb?action=dform&no=${gvo.no}">삭제</a></td>
 						</tr>
 						<tr>
-							<td colspan=4 class="text-left">${GList.content}</td>
+							<td colspan=4 class="text-left">${gvo.content}</td>
 						</tr>
 
 					</table>
